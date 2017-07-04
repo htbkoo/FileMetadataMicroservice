@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/image_search_abstraction_layer.iml" filepath="$PROJECT_DIR$/.idea/image_search_abstraction_layer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/file_metadata_microservice.iml" filepath="$PROJECT_DIR$/.idea/file_metadata_microservice.iml" />
     </modules>
   </component>
 </project>
