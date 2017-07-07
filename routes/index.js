@@ -14,4 +14,9 @@ router.get('/', (req, res) => {
     });
 });
 
+router.post('/size', (req, res) => {
+    let size = 0;
+    res.send({size})
+});
+
 module.exports = router;
