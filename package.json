@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
-    "server": "node ./dist/bin/www",
-    "start": "npm run build && npm run start",
+    "start": "babel-node ./bin/www",
+    "buildStart": "npm run build && npm run start",
     "debug": "set DEBUG=express:* & node %NODE_DEBUG_OPTION% ./dist/bin/www",
     "buildDebug": "npm run build && npm run debug"
   },
