@@ -1,38 +1,18 @@
-var express = require('express');
-var router = express.Router();
+import express from 'express';
+import multer  from 'multer';
+import fileSizeFinder from '../service/fileSizeFinder';
 
-var urlShortenerMicroservice = require("../service/urlShortenerMicroservice");
-var serverHostNameFormatter = require("../service/serverHostNameFormatter");
+let router = express.Router();
+let upload = multer({dest: '/temp/'});
 
 /* GET home page. */
-function getFullHostNameFromReq(req) {
-    return serverHostNameFormatter.appendProtocolToHostName(req.headers.host);
-}
-
-router.get('/', function (req, res) {
-    res.render('index', {
-        "serverHostNameWithProtocol": getFullHostNameFromReq(req)
-    });
+router.get('/', (req, res) => {
+    res.render('index');
 });
 
-router.get('/shorten/*', function (req, res) {
-    var url = req.params['0'];
-    urlShortenerMicroservice.tryShortening(url, getFullHostNameFromReq(req)).then(function (jsonResponse) {
-            res.send(jsonResponse);
-        }
-    );
-});
-
-router.get(/\/(.+)/, function (req, res) {
-    var urlParam = req.params['0'];
-    urlShortenerMicroservice.searchForOriginalUrl(urlParam, getFullHostNameFromReq(req)).then(function (jsonResponse) {
-            if ('shorten_from' in jsonResponse) {
-                res.redirect(jsonResponse['shorten_from']);
-            } else {
-                res.send(jsonResponse);
-            }
-        }
-    );
+router.post('/size', upload.single('file'), (req, res) => {
+    let size = fileSizeFinder.sizeOf(req.file);
+    res.send({size})
 });
 
 module.exports = router;

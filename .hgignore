@@ -118,3 +118,6 @@ shelf/
 
 # MongoDb data
 data/
+
+# babel transpiled output
+dist/
