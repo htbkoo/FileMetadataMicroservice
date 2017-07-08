@@ -3,7 +3,7 @@ import multer  from 'multer';
 import fileSizeFinder from '../service/fileSizeFinder';
 
 let router = express.Router();
-let upload = multer({dest: '/temp/'});
+let upload = multer({dest: '/'});
 
 /* GET home page. */
 router.get('/', (req, res) => {
