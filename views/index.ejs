@@ -27,10 +27,10 @@
 <div class="container-fluid">
     <div class="row">
         <!--suppress HtmlUnknownTarget -->
-        <form action="/size" method="post">
+        <form action="/size" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="exampleInputFile">Submit a file to view its filesize.</label>
-                <input type="file" id="exampleInputFile">
+                <input type="file" name="file" id="file">
             </div>
             <button type="submit" class="btn btn-default" id="btn_submit">Submit</button>
         </form>
