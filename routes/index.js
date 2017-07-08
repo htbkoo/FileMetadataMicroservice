@@ -1,13 +1,17 @@
 import express from 'express';
+import multer  from 'multer';
+import fileSizeFinder from '../service/fileSizeFinder';
+
 let router = express.Router();
+let upload = multer({dest: '/temp/'});
 
 /* GET home page. */
 router.get('/', (req, res) => {
     res.render('index');
 });
 
-router.post('/size', (req, res) => {
-    let size = 0;
+router.post('/size', upload.single('file'), (req, res) => {
+    let size = fileSizeFinder.sizeOf(req.file);
     res.send({size})
 });
 
