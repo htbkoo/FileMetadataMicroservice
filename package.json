@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "test": "mocha service/**/*.test.{js,jsx}",
+    "test:unit": "mocha service/test-unit/**/*.test.{js,jsx}",
     "start": "babel-node ./bin/www",
     "buildStart": "npm run build && npm run start",
     "debug": "set DEBUG=express:* & node %NODE_DEBUG_OPTION% ./dist/bin/www",
